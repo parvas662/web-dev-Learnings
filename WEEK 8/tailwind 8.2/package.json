@@ -1,0 +1,32 @@
+expressions.
+     *
+     * @since 0.1.0
+     * @see https://eslint.org/docs/rules/no-div-regex
+     */
+    "no-div-regex": Linter.RuleEntry<[]>;
+
+    /**
+     * Rule to disallow `else` blocks after `return` statements in `if` statements.
+     *
+     * @since 0.0.9
+     * @see https://eslint.org/docs/rules/no-else-return
+     */
+    "no-else-return": Linter.RuleEntry<
+        [
+            Partial<{
+                /**
+                 * @default true
+                 */
+                allowElseIf: boolean;
+            }>,
+        ]
+    >;
+
+    /**
+     * Rule to disallow empty functions.
+     *
+     * @since 2.0.0
+     * @see https://eslint.org/docs/rules/no-empty-function
+     */
+    "no-empty-function": Linter.RuleEntry<
+  
