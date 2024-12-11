@@ -22,8 +22,7 @@ router.post('/signup',async function(req,res){
     const username = req.body.username;
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
-    const password = req.body.password;
-    console.log(req.body)
+    const password = req.body.password; 
     try{
         const { success } = signupbody.safeParse({username,firstname,lastname,password})
         console.log(success)
@@ -41,7 +40,7 @@ router.post('/signup',async function(req,res){
                 lastname,
                 password})
             
-                /// ----- Create new account ------
+                /// create new account 
             await Account.create({
                 userId : data._id,
                 balance : 1 + Math.random() * 10000
@@ -111,15 +110,15 @@ router.get('/bulk',async function(req,res){
     const filter = req.query.filter || "";
     const users = await User.find({
         $or: [{ 
-            firstName: { $regex: filter } },
+            firstname: { $regex: filter } },
 
-            { lastName: { $regex: filter } }],
+            { lastname: { $regex: filter } }],
     });
     res.json({
         user: users.map(user => ({
             username: user.username,
-            firstName: user.firstName,
-            lastName: user.lastName,
+            firstname: user.firstname,
+            lastname: user.lastname,
             _id: user._id
         }))
     });

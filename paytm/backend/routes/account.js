@@ -27,13 +27,14 @@ router.get('/balance',authMiddleware, async function (req, res) {
 
 const transferSchema = zod.object({
     to : zod.string(),
-    amount : zod.number()
+    amount : zod.string()
 })
 
 router.post('/transfer',authMiddleware, async function (req, res) {
     const to = req.body.to;
     const amount = req.body.amount;
     const {success} = transferSchema.safeParse({to,amount});
+     
     if (!success){
         res.status(411).json({
             message: "Invalid Input"
